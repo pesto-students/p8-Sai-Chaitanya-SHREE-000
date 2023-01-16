@@ -1,0 +1,14 @@
+{
+  "name": "week-5",
+  "version": "1.0.0",
+  "description": "Project created for working on jest framework for javascript unit testing.",
+  "main": "problem4.test.js",
+  "scripts": {
+    "test": "jest"
+    },
+  "author": "Shreehari",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
