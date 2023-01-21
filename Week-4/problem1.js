@@ -1,48 +1,61 @@
-// Method - 1
-
-// function getNumber() {
-//     const randomNum = Math.random() * 1000;
-//     return new Promise((resolve, reject) => {
-//         if (randomNum % 5 === 0) reject(randomNum);
-//         else resolve(randomNum);
-//         return randomNum;
-//     })
-// }
-
-// getNumber()
-// .then((result) => {
-//     console.log(result);
-// }).catch((err) => {
-//     console.log(err);
-// });
-
-
-//Method - 2
-const resolveFunc = (value) => {
-    return new Promise((resolve) => {
-        resolve(value)
-        return value
-    })
+class CustomPromise {
+  constructor(callback) {
+    this.state = "pending";
+    this.value = undefined;
+    this.resolveCallback = [];
+    this.rejectCallback = [];
+    callback(this.resolve.bind(this), this.reject.bind(this));
+  }
+  resolve(value) {
+    this.value = value;
+    this.state = "fulfilled";
+    for (const callback of this.resolveCallback) {
+      callback(this.value);
+    }
+  }
+  reject(value) {
+    this.value = value;
+    this.state = "rejected";
+    for (const callback of this.rejectCallback) {
+      callback(this.value);
+    }
+  }
+  then(resolveCallback, rejectCallback) {
+    if (this.state === "fulfilled") {
+      resolveCallback(this.value);
+    }
+    if (this.state === "rejected") {
+      rejectCallback("this.value");
+    } else {
+      this.resolveCallback.push(resolveCallback);
+      this.rejectCallback.push(rejectCallback);
+    }
+  }
 }
 
-const rejectFunc = (value) => {
-    return new Promise((resolve, reject) => {
-        reject(value)
-        return value
-    })
-}
-
-
-Promise.resolve(value).then(x => )
 function getNumber() {
-    const randomNum = Math.random() * 1000;
-    if (randomNum % 5 === 0) rejectFunc(randomNum)
-    .catch(err => console.log(err))
-    else resolveFunc(randomNum)
-    .then(x => console.log(x))
-    .catch(err => console.log(err))
+    return Math.random() * 1000;
 }
 
-getNumber()
+const myPromise = new CustomPromise((resolve, reject) => {
+        const randomNum = getNumber();
+            if (randomNum % 5 === 0) reject('failed');
+            else resolve('sucess');
+})
+
+myPromise.then(result => {
+    console.log(result);
+}, error => {
+    console.log(error);
+})
 
 
+
+
+
+
+
+
+
+
+// getNumber();
