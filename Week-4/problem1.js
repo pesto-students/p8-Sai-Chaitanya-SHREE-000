@@ -55,7 +55,3 @@ myPromise.then(result => {
 
 
 
-
-
-
-// getNumber();
