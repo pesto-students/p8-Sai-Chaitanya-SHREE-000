@@ -1,14 +1,16 @@
 function sortArr(arr) {
     let sortedArr = [];
-    let zeroArr = [];
-    let oneArr = [];
-    let twoArr = [];
+    let zeroCount = 0;
+    let oneCount = 0;
+    let twoCount = 0;
     for(let i = 0; i < arr.length; i ++) {
-        if(arr[i] === 0) zeroArr.push(arr[i]);
-        if(arr[i] === 1) oneArr.push(arr[i]);
-        if(arr[i] === 2) twoArr.push(arr[i]) ;      
+        if(arr[i] === 0) zeroCount ++;
+        else if(arr[i] === 1) oneCount ++;
+        else twoCount ++;      
     };
-    sortedArr.push(...zeroArr, ...oneArr, ...twoArr);
+    for(let i = 0; i < zeroCount; i ++) sortedArr.push(0);
+    for(let i = 0; i < oneCount; i ++) sortedArr.push(1);
+    for(let i = 0; i < twoCount; i ++) sortedArr.push(2);
     return sortedArr;
 }
 

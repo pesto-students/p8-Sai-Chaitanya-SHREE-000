@@ -11,24 +11,28 @@ function buildSpiralMatrix(matrix) {
             spiralMatrix.push(matrix[row][i])
         }
         row ++;
+        console.log(spiralMatrix, 'top row and middle value');
 
         // end column
         for(i = row; i <= rowEnd; i ++) {
             spiralMatrix.push(matrix[i][colEnd])
         }
         colEnd --;
+        console.log(spiralMatrix, 'end column');
 
         // end row
         for (let i = colEnd; i >= col; i--) {
             spiralMatrix.push(matrix[rowEnd][i]);                    
         }
         rowEnd--;
+        console.log(spiralMatrix, 'end row');
 
         // First col from end
         for (let i = rowEnd; i >= row; i--) {
             spiralMatrix.push(matrix[i][col]); 
         }
         col++;
+        console.log(spiralMatrix, 'first col from end');
     }
     console.log(spiralMatrix);
 }
