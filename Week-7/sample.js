@@ -5,30 +5,26 @@ function buildSpiralMatrix(matrix) {
     let rowEnd = matrix.length - 1;
     let colEnd = matrix.length - 1;
     while(row <= rowEnd && col <= colEnd) {
-
-        // Top row & middle value (Where col === colEnd && row === rowEnd)
-        for(i = col; i <= colEnd; i ++) {
+        // Top row
+        for(let i = col; i <= colEnd; i ++) {
             spiralMatrix.push(matrix[row][i])
         }
         row ++;
-
-        // end column
-        for(i = row; i <= rowEnd; i ++) {
+        // Col end
+        for(let i = row; i <= rowEnd; i ++) {
             spiralMatrix.push(matrix[i][colEnd])
         }
         colEnd --;
-
-        // end row
-        for (let i = colEnd; i >= col; i--) {
-            spiralMatrix.push(matrix[rowEnd][i]);                    
+        // Bottom row
+        for(let i = colEnd; i >= col; i --) {
+            spiralMatrix.push(matrix[rowEnd][i])
         }
-        rowEnd--;
-
-        // First col from end
-        for (let i = rowEnd; i >= row; i--) {
-            spiralMatrix.push(matrix[i][col]); 
+        rowEnd --;
+        // Col start
+        for(let i = rowEnd; i >= row; i --) {
+            spiralMatrix.push(matrix[i][col])
         }
-        col++;
+        col ++;
     }
     console.log(spiralMatrix);
 }
