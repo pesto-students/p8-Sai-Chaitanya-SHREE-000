@@ -6,7 +6,11 @@ const Todos = () => {
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: '100px',
-        flexDirection: 'column'
+        flexDirection: 'column',
+    };
+
+    const submitDiv = {
+        marginTop: '20px',
     };
     
     const [todo, setTodo] = useState('');
@@ -31,12 +35,16 @@ const Todos = () => {
     };
 
     const isComplete = (id) => {
-        setTodo('');
-        for(let elem of todoArr) {
-            if(elem.id == id) {
-                elem.isComplete = !elem.isComplete;
+        let item = {};
+        let list = todoArr.map((elem) => {
+            if(elem.id === id) {
+                item = {...elem, isComplete: !elem.isComplete};
+            } else {
+                item = {...elem};
             };
-        };
+            return item;
+        });
+        setTodoArr(list);
     };
 
   return (
@@ -52,7 +60,7 @@ const Todos = () => {
         {todoArr.length > 0 && 
         todoArr.map((elem, index) => {
         return(
-        <tr>
+        <tr style={{backgroundColor: (index + 1) % 2 === 0 && 'grey'}}>
         <td key='todo'>{elem.task}</td>
         <td key='chekbox'>
         <input onClick={()=> isComplete(elem.id)} type='checkbox'/>
@@ -63,7 +71,7 @@ const Todos = () => {
         }
     </table>
     </div>
-    <div>
+    <div style={submitDiv}>
         <input type="text"
         onChange={captureTodo}
         value={todo}/>
