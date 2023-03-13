@@ -1,0 +1,13 @@
+.board {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50px;
+  /* background-color: gray; */
+}
+.chess {
+  width: 60px;
+  height: 60px;
+}
