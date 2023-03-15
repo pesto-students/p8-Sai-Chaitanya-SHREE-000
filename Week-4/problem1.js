@@ -121,3 +121,4 @@ myPromise.then(result => {
 }, error => {
     console.log(error);
 })
+
