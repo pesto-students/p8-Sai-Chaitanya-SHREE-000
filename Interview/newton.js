@@ -155,7 +155,7 @@
 // } 
 // // It is a string 
 // // It is a number
-// // (!typof myNumber will be false) 
+// // (!typof myNumber and !typeof myString will be false) 
     
 // class A { 
 //     constructor() { 
@@ -173,7 +173,7 @@
 
 // const {a: x = 10, b: y = 20} = {a: 30}; 
 // console.log(x); 
-// console.log(b);
+// // console.log(b);
 // // ReferenceError: b is not defined
 
 // const {a: x = 10, b: y = 20} = {a: 30}; 
@@ -215,7 +215,8 @@
 // } 
 // console.log(add('Orange')); 
 // console.log(add('Apple')); 
-// // ['Orange'] ['Apple']
+// console.log(add());
+// // ['Orange'] ['Apple'] [ undefined ]
 
 // function myFun(x, y, ...manyMoreArgs) { 
 //     console.log(manyMoreArgs) 
@@ -277,14 +278,6 @@
 // } else { 
 // console.log("Else"); 
 // } 
-// // If
-
-// let zero = new Number(0); 
-// if (zero) { 
-// console.log("If"); 
-// } else { 
-// console.log("Else"); 
-// } 
 // // If (here zero is an object [Number: 0])
 
 // class Vehicle { 
@@ -297,8 +290,8 @@
 // } 
 // class Car extends Vehicle { 
 //     start() { 
-//     console.log(`${this.name} car started`); 
-//     super.start(); 
+//         console.log(`${this.name} car started`); 
+//         super.start(); 
 //     } 
 // } 
 // const car = new Car('BMW'); 
@@ -351,7 +344,7 @@
 // this.area = value; 
 //   } 
 // } 
-// // ReferenceError: Cannot access 'Square' before initialization
+// // // ReferenceError: Cannot access 'Square' before initialization
 
 // class Square { 
 //     constructor(length) { 
