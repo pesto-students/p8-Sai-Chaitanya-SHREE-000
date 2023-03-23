@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+}
+
+#outerBoxId:hover .box1{
+    animation: rotationRed 1s linear 0s 1 forwards;
+}
+#outerBoxId:hover .box3{
+    animation: rotationBlue 1s linear 0s 1 forwards;
+}
+
+#outerBoxId:hover .box2{
+    animation: rotationYellow 1s linear 0s 1 forwards;
+}
+
+#outerBoxId:hover .box4{
+    animation: rotationGreen 1s linear 0s 1 forwards;
+}
+
+.outerBox {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 400px;
+    height: 400px;
+    position: relative;
+} 
+
+.box1 {
+    background-color: red;
+}
+
+.box3 {
+    background-color: blue;
+}
+
+.box2 {
+    background-color: yellow;
+}
+
+.box4 {
+    background-color: green;
+}
+
+.text {
+    position: absolute;
+    text-align: center;
+    top: 48%;
+    left: 47.5%;
+    z-index: -1;
+}
+
+@keyframes rotationRed{
+    from {
+      transform: translateX(0px) rotate(0deg);
+    }
+    to {
+      transform: translateX(-400px) rotate(90deg);
+    }
+  }
+
+  @keyframes rotationBlue {
+    from {
+      transform: translateX(0px) rotate(0deg);
+    }
+    to {
+      transform: translateX(-400px) rotate(90deg);
+    }
+  }
+
+  @keyframes rotationYellow {
+    from {
+      transform: translateX(0px) rotate(0deg);
+    }
+    to {
+      transform: translateX(400px) rotate(90deg);
+    }
+  }
+
+  @keyframes rotationGreen {
+    from {
+      transform: translateX(0px) rotate(0deg);
+    }
+    to {
+      transform: translateX(400px) rotate(90deg);
+    }
+  }
+
