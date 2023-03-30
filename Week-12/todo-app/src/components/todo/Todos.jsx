@@ -1,4 +1,7 @@
 import React, {useState} from 'react'
+import TableHeading from './TableHeading';
+import FormTodo from './FormTodo';
+import TodoHeading from './TodoHeading';
 
 const Todos = () => {
     const parentDiv = {
@@ -7,18 +10,22 @@ const Todos = () => {
         alignItems: 'center',
         marginTop: '100px',
         flexDirection: 'column',
+        textAlign: 'center'
     };
 
-    const submitDiv = {
-        marginTop: '20px',
-    };
+    const columnWidth = {
+        width: '200px'
+    }
     
     const [todo, setTodo] = useState('');
     const [todoArr, setTodoArr] = useState([]);
+
     const captureTodo = (event) => {
+        event.preventDefault();
         setTodo(event.target.value);
     };
     const addTodo = (event) => {
+        event.preventDefault();
         setTodo('');
         if(todo.trim()) {
             const id = todoArr.length + 1;
@@ -50,36 +57,30 @@ const Todos = () => {
   return (
     <div style={parentDiv}>
     <div>
-    <h1>Your Todos</h1>
+        <TodoHeading/>
     <table>
-        <tr>
-        <th key='todoHed'>Todos</th>
-        <th key='statHed'>Tick Box</th>
-        <th key='clrHed'>Status</th>
-        </tr>
+        <TableHeading />
         {todoArr.length > 0 && 
         todoArr.map((elem, index) => {
         return(
         <tr style={{backgroundColor: (index + 1) % 2 === 0 && 'grey'}}>
-        <td key='todo'>{elem.task}</td>
-        <td key='chekbox'>
+        <td style={columnWidth} key='todo'>{elem.task}</td>
+        <td style={columnWidth} key='chekbox'>
         <input onClick={()=> isComplete(elem.id)} type='checkbox'/>
         </td>
-        <td key='isComplete'>{elem.isComplete ? "Completed" : "Not Completed"}</td>
+        <td style={columnWidth} key='isComplete'>{elem.isComplete ? "Completed" : "Not Completed"}</td>
         </tr>)
         })
         }
     </table>
     </div>
-    <div style={submitDiv}>
-        <input type="text"
-        onChange={captureTodo}
-        value={todo}/>
-        <button type='submit'
-        onClick={addTodo}>Add Todo</button>
-    </div>
+    <FormTodo 
+    captureTodo={captureTodo}
+    todo={todo}
+    addTodo={addTodo}
+    />
     </div>
   )
 }
 
-export default Todos
+export default Todos;

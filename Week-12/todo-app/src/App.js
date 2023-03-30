@@ -1,5 +1,5 @@
 import './App.css';
-import Todos from './Components/Todos';
+import Todos from './components/todo/Todos';
 function App() {
   return (
     <>
