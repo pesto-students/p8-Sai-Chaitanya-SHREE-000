@@ -1,10 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './Components/Home';
-import Blogs from './Components/Blogs';
-import Contact from './Components/Contact';
-import Login from './Components/Login';
-import Signup from './Components/Signup';
-import HomePage from "./Components/HomePage";
+import {Home, LandingPage, Blogs, Contact, Login, Signup } from './components';
 
 const app = {
   minHeight: '100vh',
@@ -15,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
     <Routes style={app}>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<LandingPage />} />
       <Route path="/home" element={<Home />} />
       <Route path="blogs" element={<Blogs />} />
       <Route path="contact" element={<Contact />} />
