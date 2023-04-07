@@ -26,19 +26,19 @@ const Todos = () => {
     };
     const addTodo = (event) => {
         event.preventDefault();
-        setTodo('');
         if(todo.trim()) {
             const id = todoArr.length + 1;
             setTodoArr((prev) => 
-                [...prev, 
+            [...prev, 
                 {
                     task: todo,
                     id,
                     isComplete: false
                 }
             ]
-        );
-    };
+            );
+        };
+        setTodo('');
     };
 
     const isComplete = (id) => {
@@ -75,9 +75,9 @@ const Todos = () => {
     </table>
     </div>
     <FormTodo 
-    captureTodo={captureTodo}
+    onChange={captureTodo}
     todo={todo}
-    addTodo={addTodo}
+    onClick={addTodo}
     />
     </div>
   )
