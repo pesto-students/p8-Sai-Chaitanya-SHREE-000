@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
+import { ImageElement, InputElement, ButtonElement, DivElement } from '../shared';
 const parent = {
     marginRight: '50px',
     marginLeft: '50px',
@@ -66,6 +66,10 @@ const row = {
 }
 
 const Content = () => {
+
+    const handleLink = (e) => {
+        setLink(e.target.value)
+    }
     const [link, setLink] = useState('https://www.shutterstock.com/image-vector/girl-working-on-computer-evening-260nw-773613916.jpg');
     const [linkArr, setLinkArr] = useState([]);
     const [validLink, setValidLink] = useState(true);
@@ -104,46 +108,54 @@ const Content = () => {
   return (
     <div style={parent}>
         <div style={top}>
-        <div style={mainText}>More than just shortner links</div>
-        <div style={image}>
-            <img 
+        <DivElement
+        style={mainText}
+        textElem='More than just shortner links'
+        />
+        <div style={image}>            
+        <ImageElement
             src='https://www.shutterstock.com/image-vector/girl-working-on-computer-evening-260nw-773613916.jpg'
             alt='computer-img'
-            />
+            />                
         </div>
         </div>
 
         <div style={bottom}>
             <div style={box1}>
-                <input 
-                value={link}
-                style={inputStyle} 
-                onChange={(e) => setLink(e.target.value)}
-                type='url' 
-                />
-                <button 
-                style={buttonStyle}
-                onClick={shortenLink}
-                > 
-                Shorten
-                </button>
+            <InputElement 
+            value={link}
+            style={inputStyle} 
+            onChange={handleLink}
+            type='url'
+            />
+            <ButtonElement 
+            onClick={shortenLink}
+            style={buttonStyle}
+            buttonName="Shorten"
+            />
             </div>
             {!validLink ?
-            <div style={box2}>Entered Url is not correct</div>: 
+                    <DivElement
+                    style={box2}
+                    textElem='Entered Url is not correct'
+                    />:
             (
-                !linkArr.length ? <div style={box2}>No Url Saved</div> :
+                !linkArr.length ? <DivElement
+                    style={box2}
+                    textElem='No Url Saved'
+                    /> :
                 <div style={box2}>
                     
                     {
                         linkArr.map((elem) => {
                             return(
                                 <div style={row}>
-                                <div>
-                                {elem.originalLink}
-                                </div>
-                                <div>
-                                {elem.shortenedLink}
-                                </div>
+                                    <DivElement
+                                    textElem={elem.originalLink}
+                                    />
+                                    <DivElement
+                                    textElem={elem.shortenedLink}
+                                    />
                                 </div>
                             )
                         })
